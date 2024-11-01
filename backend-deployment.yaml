@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-backend
+  template:
+    metadata:
+      labels:
+        app: springboot-backend
+    spec:
+      containers:
+        - name: springboot-container
+          image: balalaika7771/hahaloh-back:latest  # Используйте имя вашего Docker-образа бэкенда
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-backend-service
+spec:
+  selector:
+    app: springboot-backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
