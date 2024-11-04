@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: springboot-container
-          image: balalaika7771/hahaloh-back:${BACK_TAG}
-          imagePullPolicy: IfNotPresent
+          image: balalaika7771/hahaloh-back:latest  # Используйте имя вашего Docker-образа бэкенда
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 ---

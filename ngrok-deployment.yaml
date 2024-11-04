@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ngrok
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -16,7 +15,8 @@ spec:
       containers:
         - name: ngrok-container
           image: ngrok/ngrok:latest
-          command: ["/bin/sh", "-c", "ngrok http nginx-service:80 --hostname=manatee-good-quagga.ngrok-free.app --log stdout --log-level debug"]
+          # Запуск Ngrok с логами отладки для вывода URL туннеля
+          command: ["/bin/sh", "-c", "ngrok http nginx-service:80 --log stdout --log-level debug"]
           env:
             - name: NGROK_AUTHTOKEN
               valueFrom:
@@ -24,4 +24,4 @@ spec:
                   name: ngrok-secret
                   key: NGROK_AUTHTOKEN
           ports:
-            - containerPort: 4040
+            - containerPort: 4040  # Порт для API Ngrok
