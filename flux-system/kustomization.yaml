@@ -4,5 +4,6 @@ resources:
   - image-repository.yaml
   - image-policy.yaml
   - image-update.yaml
+  - nginx-config.yaml
   - apps/front
   - apps/back
