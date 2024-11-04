@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: balalaika7771/hahaloh-front:latest
-          imagePullPolicy: Always
+          image: balalaika7771/hahaloh-front:${FRONT_TAG}
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
 ---
